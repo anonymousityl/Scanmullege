@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permanent Static QR Code</title>
+    <!-- Load the official, free library to handle the QR geometry -->
+    <script src="https://cloudflare.com"></script>
+    
+    <style>
+        /* Base canvas styles matching the original clean, rounded design */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f6f9;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .qr-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .qr-container {
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        /* Customizing the inner look of the QR grid */
+        #qrcode img {
+            display: block;
+        }
+
+        /* Central branding container overlay */
+        .qr-logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 3px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Placeholder layout mimicking the blue Mullege emblem logo */
+        .logo-icon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e6091;
+            border: 2px solid #1e6091;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2px;
+        }
+
+        .logo-text strong {
+            font-size: 9px;
+            color: #1a365d;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 5px;
+            color: #4a5568;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="qr-card">
+        <div class="qr-container">
+            <!-- The QR code will render inside this div -->
+            <div id="qrcode"></div>
+            
+            <!-- Floating center branding structure matching your original image -->
+            <div class="qr-logo-container">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">
+                    <strong>MULLEGE</strong>
+                    <span>COFFEE EXPORTER PLC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // STEP 1: Change the website address below to your actual, final destination link
+        const destinationUrl = "https://your-actual-company-website-here.com";
+
+        // STEP 2: The script converts that URL into a permanent QR pattern
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: destinationUrl,
+            width: 280,
+            height: 280,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H // High error correction leaves space for the logo block
+        });
+    </script>
+</body>
+</html>
 
